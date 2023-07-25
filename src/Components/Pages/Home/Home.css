@@ -1,0 +1,7 @@
+
+.overlay {
+    font-size: 72px;
+    background: -webkit-linear-gradient(#a9ac9bec, #26b4b49a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
