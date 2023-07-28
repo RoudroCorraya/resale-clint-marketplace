@@ -21,6 +21,7 @@ const LogIn = () => {
         .then(res=>{
             const user = res.user;
             console.log('logIn',user);
+            getToken(user.email);
             navigate(from, {replace: true});
         })
         .catch(err=>{
@@ -29,6 +30,24 @@ const LogIn = () => {
         })
     }
 
+    const getToken = (email) =>{
+        const cuurrentUser = {
+            email: email
+        }
+        fetch(`http://localhost:5000/jwt`, {
+            method: 'POST',
+            headers: {
+                
+                'content-type' : 'application/json'
+            },
+            body: JSON.stringify(cuurrentUser)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log('lastone',data);
+            localStorage.setItem('accessToken', data.token);
+        })
+    }
     return (
         <div className='mx-auto px-6 w-[400px] bg-amber-500 py-20 rounded-lg my-6' >
             <h3 className='text-4xl text-center'>SignIn</h3>

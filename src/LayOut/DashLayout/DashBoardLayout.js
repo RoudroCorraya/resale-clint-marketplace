@@ -44,6 +44,7 @@ const DashBoardLayout = () => {
                         buyer &&
                         <>
                         <li><Link to='/dashboard/myorders'>My orders</Link></li>
+                        <li><Link to={`/dashboard/wishlist/${user.email}`}>My WishList</Link></li>
                         </>
                      }
                          

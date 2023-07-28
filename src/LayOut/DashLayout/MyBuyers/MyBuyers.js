@@ -1,11 +1,38 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import MybuyerDetalis from './MybuyerDetalis';
 import MybuyerDelteModal from './MybuyerDelteModal';
 import { toast } from 'react-hot-toast';
+import { useQuery } from 'react-query';
+import { AuthContext } from '../../../Contexts/AuthProvider';
 
 const MyBuyers = () => {
-    const myBuyer = useLoaderData();
+    // const myBuyer = useLoaderData();
+    // const {data:myBuyer = [], refetch} = useQuery({
+    //     queryKey: ['myBuyer'],
+    //     queryFn: ()=> fetch(`http://localhost:5000/dashboard/mybuyerfind/${SellerEmail}`)
+    //     .then(res => res.json())
+    // })
+    const {user} = useContext(AuthContext);
+    const [myBuyer, setMyBuyer] = useState([]);
+    const token = localStorage.getItem('accessToken');
+    useEffect(()=>{
+        if(!user?.email || !token){
+            return;
+        }
+        fetch(`http://localhost:5000/dashboard/mybuyerfind/${user?.email}`,{
+            headers: {
+                autorization: `bearer ${token}`,
+                
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            // getToken(data.SellerEmail);
+            setMyBuyer(data);
+        })
+    },[user?.email, token]);
+   
     const [deleteMybuyer, setdeleteMybuyer] = useState(null);
     const closeModal = () =>{
         setdeleteMybuyer(null);

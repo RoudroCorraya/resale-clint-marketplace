@@ -2,14 +2,46 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useActionData, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider';
 import MyproductDetails from './MyproductDetails';
-import DeleteMyproduct from './DeleteMyproduct';
+import DeleteMyproduct from './DeleteMyproductModal';
 import { toast } from 'react-hot-toast';
+import { useQuery } from 'react-query';
+import DeleteMyproductModal from './DeleteMyproductModal';
 
 const MyProduct = () => {
     const {user} = useContext(AuthContext);
-    const myproducts = useLoaderData();
-  
-    
+    const [productDelete, setmyProductDelete] = useState(null);
+    // const myproducts = useLoaderData();
+   const {data: myproducts =[], isLoading, refetch} = useQuery({
+    queryKey: ['myproducts'],
+    queryFn: async ()=>{
+        const res = await fetch(`http://localhost:5000/dashboard/categories/${user?.email}`);
+        const data = res.json();
+        return data;
+    }
+   });
+   if (isLoading) {
+    return <p>Loading.....</p>
+}
+const closeModal = () => {
+    setmyProductDelete(null);
+}
+const deletaitationProduct = (data) => {
+    fetch(`http://localhost:5000/myproduct/${data._id}`, {
+        method: 'DELETE',
+        headers: {
+            'content-type': 'application/json'
+        }
+    })
+        .then(res => res.json())
+        .then(data => {
+            console.log('inside my product data', data);
+            if (data.deletedCount > 0) {
+                toast.success(`${data?.model} deleted Successfully`);
+                refetch();
+                // navigate('/dashboard/buyers');
+            }
+        })
+}
     
     // console.log('myproduct', myproducts);
     return (
@@ -30,12 +62,14 @@ const MyProduct = () => {
                 <tbody>
                    
                     {
-                        myproducts.map((myproduct, i) => <MyproductDetails myproduct={myproduct} i={i} ></MyproductDetails>)
+                        myproducts.map((myproduct, i) => <MyproductDetails myproduct={myproduct} i={i} setmyProductDelete={setmyProductDelete}></MyproductDetails>)
                     }
                 </tbody>
             </table>
         </div>
-        
+        {productDelete &&
+            <DeleteMyproductModal productDeleteinfo={productDelete} closeModal={closeModal} deletaitationProduct={deletaitationProduct}></DeleteMyproductModal>
+        }
 
     </div>
     );

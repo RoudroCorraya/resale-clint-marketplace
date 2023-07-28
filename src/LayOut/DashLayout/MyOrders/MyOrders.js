@@ -5,10 +5,20 @@ import MyOrdersDetails from './MyOrdersDetails';
 
 const MyOrders = () => {
     const [myorders, setMyorders] = useState([]);
-    const { user } = useContext(AuthContext);
+    const { user, SignOut } = useContext(AuthContext);
     useEffect(() => {
-        fetch(`http://localhost:5000/dashboard/orders?email=${user?.email}`)
-            .then(res => res.json())
+        fetch(`http://localhost:5000/dashboard/orders?email=${user?.email}`,{
+            headers:{
+                autorization: `bearer ${localStorage.getItem('accessToken')}`,
+                
+            }
+        })
+            .then(res => {
+                if(res.status === 401 || res.status === 430){
+                    SignOut();
+                }
+                return res.json();
+            })
             .then(data => setMyorders(data))
 
     }, [user?.email])

@@ -35,9 +35,31 @@ const AuthProvider = ({children}) => {
     const updateUser = (userinfo) =>{
         return updateProfile(auth.currentUser, userinfo);
     }
+    const getToken = (email) =>{
+        const cuurrentUser = {
+            email: email
+        }
+        fetch(`http://localhost:5000/jwt`, {
+            method: 'POST',
+            headers: {
+                
+                'content-type' : 'application/json'
+            },
+            body: JSON.stringify(cuurrentUser)
+        })
+
+        .then(res => res.json())
+        .then(data => {
+            console.log('lastone',data);
+            localStorage.setItem('accessToken', data.token);
+        })
+    }
     useEffect(()=>{
        const unsubsribe = onAuthStateChanged(auth, createUser =>{
             console.log('user observing');
+           if(createUser?.email){
+            getToken(createUser?.email);
+           }
             setUser(createUser);
             setLoading(false);
         });

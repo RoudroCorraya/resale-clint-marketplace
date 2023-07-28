@@ -19,6 +19,7 @@ import DisplayError from "../../Components/Shared/DisplayError/DisplayError";
 import MyProduct from "../../LayOut/DashLayout/AddProduct/MyProduct";
 import Blogs from "../../Components/Pages/Blogs/Blogs";
 import MyBuyers from "../../LayOut/DashLayout/MyBuyers/MyBuyers";
+import WishList from "../../Components/Pages/Dashboard/WishList";
 
 export const router = createBrowserRouter([
     {
@@ -68,12 +69,12 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/sellers',
-                loader: () => fetch('http://localhost:5000/sellers'),
+                // loader: () => fetch('http://localhost:5000/sellers'),
                 element: <AllSeller></AllSeller>
             },
             {
                 path: '/dashboard/buyers',
-                loader: () => fetch('http://localhost:5000/buyer'),
+                // loader: () => fetch('http://localhost:5000/buyer'),
                 element: <AllBuyer></AllBuyer>
             },
             {
@@ -83,7 +84,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/categories/:SellerEmail',
-               loader: ({params})=> fetch(`http://localhost:5000/dashboard/categories/${params.SellerEmail}`),
+            //    loader: ({params})=> fetch(`http://localhost:5000/dashboard/categories/${params.SellerEmail}`),
                 element: <MyProduct></MyProduct>
             },
            
@@ -94,8 +95,13 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/mybuyerfind/:SellerEmail',
-               loader: ({params})=> fetch(`http://localhost:5000/dashboard/mybuyerfind/${params.SellerEmail}`),
+            //    loader: ({params})=> fetch(`http://localhost:5000/dashboard/mybuyerfind/${params.SellerEmail}`),
                 element: <MyBuyers></MyBuyers>
+            },
+            {
+                path: '/dashboard/wishlist/:buyerEmail',
+           
+                element: <WishList></WishList>
             },
         ]
     }

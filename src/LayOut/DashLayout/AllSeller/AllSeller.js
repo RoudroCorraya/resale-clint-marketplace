@@ -3,11 +3,18 @@ import { useLoaderData, useLocation } from 'react-router-dom';
 import AllSellerDetails from './AllSellerDetails';
 import ConfirmationModal from '../../../Components/Shared/ConfirmationModal/ConfirmationModal';
 import { toast } from 'react-hot-toast';
+import { useQuery } from 'react-query';
 
 const AllSeller = () => {
 
    const navigate = useLocation();
-    const allseller = useLoaderData();
+    // const allseller = useLoaderData();
+    const {data:allseller = [], refetch} = useQuery({
+        queryKey: ['allseller'],
+        queryFn: ()=> fetch('http://localhost:5000/sellers')
+        .then(res => res.json())
+
+    })
     console.log('allseller',allseller);
     const [deleteSeller, setDeleteSeller] = useState(null);
     const closeModal = () =>{
@@ -25,7 +32,9 @@ const AllSeller = () => {
         console.log('delete data',data);
         if(data.deletedCount > 0 ){
             toast.success(`${selelr.name} deleted Successfully`);
-            navigate('/dashboard/sellers');
+
+            // navigate('/dashboard/sellers');
+            refetch();
         }
     })
    }
