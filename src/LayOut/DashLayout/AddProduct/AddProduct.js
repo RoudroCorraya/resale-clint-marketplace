@@ -12,10 +12,13 @@ const AddProduct = () => {
     const {user} = useContext(AuthContext);
     const imagehostkey = process.env.REACT_APP_IMAGEBB_KEY;
     console.log('image host key', imagehostkey);
+    const [varify, setveryfy] = useState({});
+    console.log('berify cheak',varify);
 
     const addProduct = (data) =>{
         const productImg = data.productImg[0];
         const formData = new FormData();
+        
         formData.append('image', productImg)
         const url = `https://api.imgbb.com/1/upload?key=${imagehostkey}`;
         fetch(url, {
@@ -38,6 +41,7 @@ const AddProduct = () => {
                     PostedDate: data.PostedDate,
                     SellerName: data.SellerName,
                     SellerEmail: user.email,
+                    varify,
                 }
                 fetch('http://localhost:5000/dashboard/addproduct', {
                     method: 'POST',
@@ -48,18 +52,26 @@ const AddProduct = () => {
                 })
                 .then(res=> res.json())
                 .then(data => {
+                    userverifycheak(user.email);
                     console.log('adding productinfo',data);
-                    
+                    navigate(`/categories/${addProductinfo.category}`);
                     toast.success('product added successfully');
                    
                   
                     
                 })
-                navigate(`/categories/${data.category}`);
+                
             }
         })
         console.log('info adproduct', data);
-        
+        const userverifycheak = (email) =>{
+            fetch(`http://localhost:5000/userverifycheak/${email}`)
+            .then(res=> res.json())
+            .then(data => {
+                console.log('inuserverifycheak ', data);
+                setveryfy(data);
+            })
+        }
        
     }
 

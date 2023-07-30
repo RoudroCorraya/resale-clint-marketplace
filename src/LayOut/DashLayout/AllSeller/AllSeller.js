@@ -8,6 +8,7 @@ import { useQuery } from 'react-query';
 const AllSeller = () => {
 
    const navigate = useLocation();
+   
     // const allseller = useLoaderData();
     const {data:allseller = [], refetch} = useQuery({
         queryKey: ['allseller'],

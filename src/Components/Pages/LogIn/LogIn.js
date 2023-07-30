@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider';
 import { useForm } from 'react-hook-form';
 import { FaGoogle } from 'react-icons/fa';
+import { toast } from 'react-hot-toast';
 
 
 const LogIn = () => {
@@ -46,6 +47,7 @@ const LogIn = () => {
         .then(data => {
             console.log('lastone',data);
             localStorage.setItem('accessToken', data.token);
+            toast.success('SignIn successfully');
         })
     }
     return (

@@ -4,9 +4,10 @@ import { TbAB2 } from "react-icons/tb";
 import { AuthContext } from '../../../Contexts/AuthProvider';
 import { useQuery } from 'react-query';
 import { toast } from 'react-hot-toast';
+import { AiFillCheckCircle } from "react-icons/ai";
 
 const CategoryDetails = ({category}) => {
-    const {_id ,model, category:wishCategory, productImg, Location, ResalePrice, OrginalPrice, used, PostedDate, SellerName, SellerEmail} = category;
+    const {_id ,model, category:wishCategory, productImg, Location, ResalePrice, OrginalPrice, used, PostedDate, SellerName, SellerEmail, varify} = category;
     console.log('bookinmodal cheaking', category);
     const {user} = useContext(AuthContext);
     const [modal, setModal] = useState(false);
@@ -43,9 +44,9 @@ const CategoryDetails = ({category}) => {
  
     return (
        
-        <div className="card w-96 bg-base-100 shadow-xl my-4">
+        <div className="card w-80 bg-base-100 shadow-xl my-4">
             
-        <figure><img src={productImg} alt="Shoes" /></figure>
+        <figure><img className='h-52' src={productImg} alt="Shoes" /></figure>
         <div className="card-body">
             <h2 className="card-title">Model: {model} </h2>
             <p>Location: {Location}</p>
@@ -53,10 +54,12 @@ const CategoryDetails = ({category}) => {
             <p>Orginal Price: BDT {OrginalPrice}</p>
             <p>Yesrs of Use: {used}</p>
             <p>Posted Date: {PostedDate}</p>
-            <p>Seller Name: {SellerName}</p>
+            <p>Seller Name: {SellerName} {varify &&
+                <span><AiFillCheckCircle className='inline-block text-green-600'/></span>}</p>
+            
             <div className="card-actions justify-start">
-            <button onClick={handleWishList} className='btn btn-warning'><TbAB2 />Add to WishList</button>
-                <label onClick={()=>setModal(true)} htmlFor="my_modal_6" className="btn btn-warning">Book Now</label>
+            <button onClick={handleWishList} className='btn btn-warning w-full'><TbAB2 />Add to WishList</button>
+                <label onClick={()=>setModal(true)} htmlFor="my_modal_6" className="btn btn-warning w-full ">Book Now</label>
             </div>
         </div>
         {modal &&

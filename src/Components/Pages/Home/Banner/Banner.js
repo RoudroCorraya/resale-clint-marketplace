@@ -34,10 +34,12 @@ const Banner = () => {
 
  
   return (
-    <div className='carousel w-full'>
+    
+      <div className='carousel w-full'>
       {
         bannerData.map(bannerItem => <BannerDetails key={ bannerItem.id} bannerItem={bannerItem}></BannerDetails>)
       }
+    
     </div>
   );
 };

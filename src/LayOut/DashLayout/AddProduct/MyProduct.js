@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useActionData, useLoaderData } from 'react-router-dom';
+import { useActionData, useLoaderData, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider';
 import MyproductDetails from './MyproductDetails';
 import DeleteMyproduct from './DeleteMyproductModal';
@@ -9,6 +9,7 @@ import DeleteMyproductModal from './DeleteMyproductModal';
 
 const MyProduct = () => {
     const {user} = useContext(AuthContext);
+    const navigate = useLocation();
     const [productDelete, setmyProductDelete] = useState(null);
     // const myproducts = useLoaderData();
    const {data: myproducts =[], isLoading, refetch} = useQuery({
