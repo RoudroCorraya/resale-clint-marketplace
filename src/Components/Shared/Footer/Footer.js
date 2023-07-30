@@ -5,7 +5,7 @@ import ResaleLogo from '../../../Assets/logo/logoResale2.png';
 const Footer = () => {
     return (
         <footer className="footer items-center p-4 bg-zinc-300  text-neutral-content">
-            <div className="items-center grid-flow-col">
+            <div className="items-center grid-flow-col mx-auto md:mx-0 lg:mx-0">
                 <div className='w-[100px]'>
                 <img src={ResaleLogo} alt=''/>
                 </div>

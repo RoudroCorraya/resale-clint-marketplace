@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import banner1 from '../../../../Assets/banner/banner.jpg';
-import banner2 from '../../../../Assets/banner/banner2.jpg';
-import banner3 from '../../../../Assets/banner/banner3.png';
+import banner1 from '../../../../Assets/banner/rize1.PNG';
+import banner2 from '../../../../Assets/banner/Captrefre2.PNG';
+import banner3 from '../../../../Assets/banner/Last8fc64.webp';
 
 import BannerDetails from './BannerDetails';
 import '../Home.css';
