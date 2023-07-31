@@ -5,7 +5,7 @@ import banner2 from '../../../../Assets/banner/Captrefre2.PNG';
 import banner3 from '../../../../Assets/banner/Last8fc64.webp';
 
 import BannerDetails from './BannerDetails';
-import '../Home.css';
+import './Banner.css';
 
 const Banner = () => {
   const bannerData = [

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import ResaleLogo from '../../../Assets/logo/logoResale2.png';
+import ResaleLogo from '../../../Assets/logo/RO1.gif';
 import ResaleLogo2 from '../../../Assets/logo/istockphoto-1318482009-612x612.jpg';
 import { AuthContext } from '../../../Contexts/AuthProvider';
 

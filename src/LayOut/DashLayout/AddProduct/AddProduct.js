@@ -76,7 +76,7 @@ const AddProduct = () => {
     }
 
     return (
-        <div className='mx-10 px-6 w-[400px] bg-amber-500 py-20 rounded-lg my-6' >
+        <div className='mx-10 px-6 lg:w-[400px] md:w-[400px] sm:w-[300px] bg-amber-500 py-20 rounded-lg my-6' >
 
             {/* <form onSubmit={handleSubmit((data) => setData(JSON.stringify(data)))}> */}
 

@@ -8,7 +8,7 @@ import { toast } from 'react-hot-toast';
 
 const LogIn = () => {
 
-    const {signIn} = useContext(AuthContext);
+    const {signIn, googleSignUp, updateUser} = useContext(AuthContext);
     const [data, setData] = useState('');
     const {register, handleSubmit, formState: { errors }} = useForm();
     const [loginError, setLogInError] = useState('');
@@ -50,8 +50,51 @@ const LogIn = () => {
             toast.success('SignIn successfully');
         })
     }
+    const handlesignIngoogle = () => {
+        googleSignUp()
+        .then(res => {
+            const user = res.user;
+            getToken(user.email);
+            console.log('googlesignIn user', user);
+            const userInfo = {
+                displayName: data.name,
+                
+
+            }
+            updateUser(userInfo)
+            .then(() => {
+                navigate('/');
+                //save user
+                // const googleuser = { name: user.displayName, email: user.email, role: 'Buyer'};
+                // console.log('save googleuser', googleuser);
+        
+        
+                // fetch('http://localhost:5000/users', {
+                //     method: 'POST',
+                //     headers: {
+                //         autorization: `bearer ${localStorage.getItem('accessToken')}`,
+                //         'content-type': 'application/json'
+        
+        
+                //     },
+                //     body: JSON.stringify(googleuser)
+                // })
+                //     .then(res => res.json())
+                //     .then(data => {
+                //         console.log('save googleuseruser', data);
+                        
+                //         navigate('/');
+        
+                //     })
+                //save user
+                
+            })
+        })
+        
+           
+    }
     return (
-        <div className='mx-auto px-6 w-[400px] bg-amber-500 py-20 rounded-lg my-6' >
+        <div className='mx-auto px-6 lg:w-[400px] md:w-[400px] sm:w-[300px] bg-amber-500 py-20 rounded-lg my-6' >
             <h3 className='text-4xl text-center'>SignIn</h3>
             <form onSubmit={handleSubmit(handlesignIn)}>
             <label className='block text-white'>Email</label>
@@ -70,7 +113,7 @@ const LogIn = () => {
                 
                 <p>{data}</p>
                 <input className='btn btn-warning' type="submit" />
-                <FaGoogle className='mx-auto font-semibold text-3xl'/>
+                <FaGoogle onClick={handlesignIngoogle} className='mx-auto font-semibold text-3xl'/>
                 <p className='text-center'>Already Have Account? <Link className='text-sky-500' to='/signup'>SignUp</Link></p>
                 
             </form>

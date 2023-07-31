@@ -15,12 +15,12 @@ const WishListDetails = ({ w, i, setWishlistDelete }) => {
                 </div>
                 <div className='my-auto mx-2'><span className=''>{model}</span></div>
             </td>
-            <td>
+            <td className='text-xs'>
                 Seller Email: {SellerEmail}<br/>
                 Location: {Location}
             </td>
             <td>
-                <Link to={`/categories/${wishCategory}`}><button className='btn btn-warning'>Go to Purchase</button></Link>
+                <Link to={`/categories/${wishCategory}`}><button className='btn btn-xs my-1 bg-warning py-1'>Purchase</button></Link>
                 
                 <label onClick={()=>setWishlistDelete(w)} htmlFor="wishListDelete" className="btn btn-xs bg-red-600 mx-2">x</label>
                 

@@ -37,12 +37,12 @@ const MyproductDetails = ({ myproduct, i, setmyProductDelete }) => {
         <tr>
 
             <th>{i + 1}</th>
-            <td>{model}</td>
-            <td>Name: {SellerName}<br />
+            <td className='text-xs'>{model}</td>
+            <td className='text-xs'>Name: {SellerName}<br />
                 location: {Location}<br />
                 Post Date: {PostedDate}
             </td>
-            <td><strong>BDT {ResalePrice}</strong></td>
+            <td className='text-xs'><strong>BDT {ResalePrice}</strong></td>
 
             <td>
                 {

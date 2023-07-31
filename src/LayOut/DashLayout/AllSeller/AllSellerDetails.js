@@ -48,22 +48,22 @@ const AllSellerDetails = ({ seller, i, setDeleteSeller }) => {
         <tr>
             <th>{i + 1}</th>
 
-            <td>{name}<br />
+            <td className='text-xs'>{name}<br />
 
             </td>
-            <td>{email}</td>
+            <td className='text-xs'>{email}</td>
 
             <td>
 
-                <label onClick={() => setDeleteSeller(seller)} htmlFor="Delete" className="btn btn-warning mx-2">Delete</label>
+                <label onClick={() => setDeleteSeller(seller)} htmlFor="Delete" className="btn btn-xs mx-2">Delete</label>
                 {!varify &&
                    
-                       <label onClick={() => handleVerify(email, _id)} className="btn btn-warning mx-2">Verify</label>
+                       <label onClick={() => handleVerify(email, _id)} className="btn btn-xs mx-2">Verify</label>
 
                 }
                 {
                     varify &&
-                    <label className="btn btn-neutral mx-2">Verified</label> 
+                    <label className="btn btn-xs bg-green-700 mx-2">Verified</label> 
                 }
 
 

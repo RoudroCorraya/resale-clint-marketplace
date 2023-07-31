@@ -44,7 +44,7 @@ const WishList = () => {
     return (
         <div>
             Total wishlist : {wishList.length}
-            <table className="table">
+            <table className="table sm:table-xs md:table-md lg:table-lg">
                 {/* head */}
                 <thead>
                     <tr>

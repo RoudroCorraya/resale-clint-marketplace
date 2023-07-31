@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ResaleLogo from '../../../Assets/logo/logoResale2.png';
+import ResaleLogo from '../../../Assets/logo/RO1.gif';
 
 const Footer = () => {
     return (

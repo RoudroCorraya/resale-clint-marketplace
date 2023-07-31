@@ -27,7 +27,7 @@ const MyOrders = () => {
         <div className='mx-4'>
             you have orders : {myorders.length}
             <div className="overflow-x-auto">
-                <table className="table">
+                <table className="table sm:table-xs md:table-md lg:table-lg">
                     {/* head */}
                     <thead>
                         <tr>

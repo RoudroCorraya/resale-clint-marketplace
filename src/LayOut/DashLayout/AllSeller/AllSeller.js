@@ -43,7 +43,7 @@ const AllSeller = () => {
         <div className='mx-4'>
             Totale seller : {allseller.length}
             <div className="overflow-x-auto">
-                <table className="table">
+                <table className="table sm:table-xs md:table-md lg:table-lg">
                     {/* head */}
                     <thead>
                         <tr>

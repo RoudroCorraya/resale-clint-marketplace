@@ -1,0 +1,9 @@
+.overlay {
+    /* content:''; */
+    position:absolute;
+    left:0; top:0;
+    width:100%; height:100%;
+    display:inline-block;
+    border-radius: 12px;
+    background-image: linear-gradient(to right, #5f535741 0%, rgba(148, 136, 136, 0.555) 100%, rgba(139, 65, 50, 0.589) 100%);
+}

@@ -10,12 +10,12 @@ const MyOrdersDetails = ({ MyOrders, i }) => {
 
         <tr>
             <th>{i + 1}</th>
-            <td>{model}</td>
-            <td>Name: {SellerName}<br />
+            <td className='text-xs'>{model}</td>
+            <td className='text-xs'>Name: {SellerName}<br />
                 location: {location}<br />
                 contact: {phone}
             </td>
-            <td><strong>BDT {ResalePrice}</strong></td>
+            <td className='text-xs'><strong>BDT {ResalePrice}</strong></td>
             
             <td>
                 {
