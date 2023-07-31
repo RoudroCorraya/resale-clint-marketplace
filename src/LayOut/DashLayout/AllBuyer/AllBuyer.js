@@ -11,7 +11,7 @@ const AllBuyer = () => {
     // const allBuyer = useLoaderData();
     // const {data:allBuyer = [], refetch} = useQuery({
     //     queryKey: ['allBuyer'],
-    //     queryFn: () => fetch('http://localhost:5000/buyer')
+    //     queryFn: () => fetch('https://resale-server-market.vercel.app/buyer')
     //     .then(res => res.json())
         
     // })
@@ -20,7 +20,7 @@ const AllBuyer = () => {
     const navigate = useLocation();
     const [allBuyer, setAllBuyer] = useState([]);
     useEffect(()=>{
-        axios.get('http://localhost:5000/buyer')
+        axios.get('https://resale-server-market.vercel.app/buyer')
         .then(data => {
             
             const loadedData = data.data;
@@ -33,7 +33,7 @@ const AllBuyer = () => {
         setDeleteBuyer(null);
     }
    const deletaitation = (buyer) =>{
-    fetch(`http://localhost:5000/buyer/${buyer._id}`, {
+    fetch(`https://resale-server-market.vercel.app/buyer/${buyer._id}`, {
     method: 'DELETE',
     headers: {
         'content-type' : 'application/json'
@@ -45,7 +45,7 @@ const AllBuyer = () => {
         if(data.deletedCount > 0 ){
             toast.success(`${deleteBuyer.name} deleted Successfully`);
             // refetch();
-            // navigate(`/dashboard/`);
+            navigate('/dashboard');
         }
     })
    }

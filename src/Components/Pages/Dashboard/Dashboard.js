@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import dashboard from '../../../Assets/dashboard/dashboard.jpg';
 
 const Dashboard = () => {
+    //changing title start
+useEffect(()=>{
+    document.title = 'Resale-DashBoard';
+}, [])
+//changing title end
     return (
         <div className='text-center'>
            

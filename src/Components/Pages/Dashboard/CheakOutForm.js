@@ -15,7 +15,7 @@ const CheakOutForm = ({paymentinfo}) => {
 
     useEffect(() => {
         // Create PaymentIntent as soon as the page loads
-        fetch("http://localhost:5000/create-payment-intent", {
+        fetch("https://resale-server-market.vercel.app/create-payment-intent", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ResalePrice}),
@@ -70,7 +70,7 @@ const CheakOutForm = ({paymentinfo}) => {
                     bookingId : _id,
                     product_Id
                 }
-                fetch('http://localhost:5000/payments', {
+                fetch('https://resale-server-market.vercel.app/payments', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json',
@@ -86,7 +86,7 @@ const CheakOutForm = ({paymentinfo}) => {
                             setSuccess('Your payment Completed Successfully!');
                             setTransectionId(paymentIntent.id);
                             setstatus('');
-                            fetch(`http://localhost:5000/payments/${product_Id}`, {
+                            fetch(`https://resale-server-market.vercel.app/payments/${product_Id}`, {
                                 method: 'PATCH',
                                 headers: {
                                     'content-type' : 'application/json'

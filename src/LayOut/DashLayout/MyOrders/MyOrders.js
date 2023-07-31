@@ -7,7 +7,7 @@ const MyOrders = () => {
     const [myorders, setMyorders] = useState([]);
     const { user, SignOut } = useContext(AuthContext);
     useEffect(() => {
-        fetch(`http://localhost:5000/dashboard/orders?email=${user?.email}`,{
+        fetch(`https://resale-server-market.vercel.app/dashboard/orders?email=${user?.email}`,{
             headers:{
                 autorization: `bearer ${localStorage.getItem('accessToken')}`,
                 

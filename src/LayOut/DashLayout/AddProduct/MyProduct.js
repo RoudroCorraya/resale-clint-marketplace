@@ -15,7 +15,7 @@ const MyProduct = () => {
    const {data: myproducts =[], isLoading, refetch} = useQuery({
     queryKey: ['myproducts'],
     queryFn: async ()=>{
-        const res = await fetch(`http://localhost:5000/dashboard/categories/${user?.email}`);
+        const res = await fetch(`https://resale-server-market.vercel.app/dashboard/categories/${user?.email}`);
         const data = res.json();
         return data;
     }
@@ -27,7 +27,7 @@ const closeModal = () => {
     setmyProductDelete(null);
 }
 const deletaitationProduct = (data) => {
-    fetch(`http://localhost:5000/myproduct/${data._id}`, {
+    fetch(`https://resale-server-market.vercel.app/myproduct/${data._id}`, {
         method: 'DELETE',
         headers: {
             'content-type': 'application/json'
@@ -39,7 +39,7 @@ const deletaitationProduct = (data) => {
             if (data.deletedCount > 0) {
                 toast.success(`${data?.model} deleted Successfully`);
                 refetch();
-                // navigate('/dashboard/buyers');
+                navigate('/dashboard');
             }
         })
 }

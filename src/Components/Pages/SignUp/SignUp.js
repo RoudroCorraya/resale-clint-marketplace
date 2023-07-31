@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { FaGoogle } from 'react-icons/fa';
 import { AuthContext } from '../../../Contexts/AuthProvider';
@@ -14,6 +14,11 @@ const SignUp = () => {
     const [signUpError, SetSignUpError] = useState();
     const navigate = useNavigate();
     const { register, handleSubmit, formState: { errors } } = useForm();
+    //changing title start
+useEffect(()=>{
+    document.title = 'Resale-SignUp';
+}, [])
+//changing title end
 
     const handlesignIn = (data) => {
         SetSignUpError('');
@@ -45,7 +50,7 @@ const SignUp = () => {
         const user = { name: data.name, email: data.email, role: data.role };
         
         
-        fetch('http://localhost:5000/users', {
+        fetch('https://resale-server-market.vercel.app/users', {
             method: 'POST',
             headers: {
                 autorization: `bearer ${localStorage.getItem('accessToken')}`,
@@ -67,7 +72,7 @@ const SignUp = () => {
         const cuurrentUser = {
             email: email
         }
-        fetch(`http://localhost:5000/jwt`, {
+        fetch(`https://resale-server-market.vercel.app/jwt`, {
             method: 'POST',
             headers: {
                 
@@ -101,7 +106,7 @@ const SignUp = () => {
                 console.log('save googleuser', googleuser);
         
         
-                fetch('http://localhost:5000/users', {
+                fetch('https://resale-server-market.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         autorization: `bearer ${localStorage.getItem('accessToken')}`,

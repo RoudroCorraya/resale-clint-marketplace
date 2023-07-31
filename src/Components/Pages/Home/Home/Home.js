@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Banner from '../Banner/Banner';
 import ProductCategory from '../ProductCategory/ProductCategory';
 import OffersDetails from '../Offers/OffersDetails';
@@ -8,7 +8,11 @@ import { AuthContext } from '../../../../Contexts/AuthProvider';
 import AdvertiseManage from '../Advertise/AdvertiseManage';
 const Home = () => {
     const { advertise } = useContext(AuthContext);
-
+//changing title start
+useEffect(()=>{
+    document.title = 'Resale-Home';
+}, [])
+//changing title end
 
     return (
         <div>

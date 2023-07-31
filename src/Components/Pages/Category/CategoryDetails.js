@@ -25,7 +25,7 @@ const CategoryDetails = ({category}) => {
         }
         // console.log(WishListInf);
         // console.log(category);
-        fetch('http://localhost:5000/wishlish', {
+        fetch('https://resale-server-market.vercel.app/wishlish', {
             method: 'POST',
             headers: {
                 'content-type' : 'application/json'

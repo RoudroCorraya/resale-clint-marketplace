@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ResaleLogo from '../../../Assets/logo/RO1.gif';
 import ResaleLogo2 from '../../../Assets/logo/istockphoto-1318482009-612x612.jpg';
@@ -6,6 +6,11 @@ import { AuthContext } from '../../../Contexts/AuthProvider';
 
 const Navbar = () => {
     const { user, SignOut } = useContext(AuthContext);
+    //changing title start
+useEffect(()=>{
+    document.title = 'Resale-Dashboard';
+}, [])
+//changing title end
     const handleSignOut = () => {
         SignOut()
             .then(() => { })

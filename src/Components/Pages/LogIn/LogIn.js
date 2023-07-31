@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider';
 import { useForm } from 'react-hook-form';
@@ -15,6 +15,11 @@ const LogIn = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const from = location.state?.from?.pathName || '/';
+    //changing title start
+useEffect(()=>{
+    document.title = 'Resale-SignIn';
+}, [])
+//changing title end
 
     const handlesignIn = (data) =>{
         setLogInError('');
@@ -35,7 +40,7 @@ const LogIn = () => {
         const cuurrentUser = {
             email: email
         }
-        fetch(`http://localhost:5000/jwt`, {
+        fetch(`https://resale-server-market.vercel.app/jwt`, {
             method: 'POST',
             headers: {
                 
@@ -69,7 +74,7 @@ const LogIn = () => {
                 // console.log('save googleuser', googleuser);
         
         
-                // fetch('http://localhost:5000/users', {
+                // fetch('https://resale-server-market.vercel.app/users', {
                 //     method: 'POST',
                 //     headers: {
                 //         autorization: `bearer ${localStorage.getItem('accessToken')}`,

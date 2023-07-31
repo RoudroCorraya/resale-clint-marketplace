@@ -43,7 +43,7 @@ const AddProduct = () => {
                     SellerEmail: user.email,
                     varify,
                 }
-                fetch('http://localhost:5000/dashboard/addproduct', {
+                fetch('https://resale-server-market.vercel.app/dashboard/addproduct', {
                     method: 'POST',
                     headers: {
                         'content-type' : 'application/json'
@@ -65,7 +65,7 @@ const AddProduct = () => {
         })
         console.log('info adproduct', data);
         const userverifycheak = (email) =>{
-            fetch(`http://localhost:5000/userverifycheak/${email}`)
+            fetch(`https://resale-server-market.vercel.app/userverifycheak/${email}`)
             .then(res=> res.json())
             .then(data => {
                 console.log('inuserverifycheak ', data);
