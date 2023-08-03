@@ -7,25 +7,7 @@ const AllSellerDetails = ({ seller, i, setDeleteSeller }) => {
     const { name, email, _id, varify } = seller;
     
     const handleVerify = (email, _id) => {
-        fetch(`https://resale-server-market.vercel.app/sellerVerify/${email}`, {
-            method: 'PATCH',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(seller)
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.modifiedCount > 0) {
-                    userverify(_id);   
-                    console.log(data);
-                    toast.success('verifyed successfully');
-                }
-            })
-    }
-    const userverify = (_id) =>{
-        console.log('userId',_id);
-        fetch(`https://resale-server-market.vercel.app/userVerify/${_id}`, {
+        fetch(`http://localhost:5000/userVerify/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -35,13 +17,54 @@ const AllSellerDetails = ({ seller, i, setDeleteSeller }) => {
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount > 0) {
-                    
-                    console.log(data);
+                    categoryverify(email);
+                    // productVerify(email);
+                    console.log('from user verification',data);
                     
                     
                 }
             })
+      
+       
     }
+    const categoryverify = (email) =>{
+        fetch(`http://localhost:5000/sellerVerify/${email}`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(seller)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    // userverify(_id); 
+                    console.log('handleVerify data',data);
+                    toast.success('verifyed successfully');
+                }
+            })
+   
+        
+    }
+    // const productVerify = (email) =>{
+    //     fetch(`http://localhost:5000/productVerify/${email}`, {
+    //         method: 'PATCH',
+    //         headers: {
+    //             'content-type': 'application/json'
+    //         },
+    //         body: JSON.stringify(seller)
+    //     })
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             if (data.modifiedCount > 0) {
+    //                 // userverify(_id); 
+    //                 console.log('handleVerify data',data);
+    //                 toast.success('verifyed product successfully');
+    //             }
+    //         })
+   
+        
+    // }
     
     
     return (

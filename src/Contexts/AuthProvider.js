@@ -42,7 +42,7 @@ const AuthProvider = ({children}) => {
         const cuurrentUser = {
             email: email
         }
-        fetch(`https://resale-server-market.vercel.app/jwt`, {
+        fetch(`http://localhost:5000/jwt`, {
             method: 'POST',
             headers: {
                 

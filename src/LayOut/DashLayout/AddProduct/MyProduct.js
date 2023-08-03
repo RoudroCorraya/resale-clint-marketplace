@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useActionData, useLoaderData, useLocation } from 'react-router-dom';
+import { useActionData, useLoaderData, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider';
 import MyproductDetails from './MyproductDetails';
 import DeleteMyproduct from './DeleteMyproductModal';
@@ -9,13 +9,13 @@ import DeleteMyproductModal from './DeleteMyproductModal';
 
 const MyProduct = () => {
     const {user} = useContext(AuthContext);
-    const navigate = useLocation();
+    const navigate = useNavigate();
     const [productDelete, setmyProductDelete] = useState(null);
     // const myproducts = useLoaderData();
    const {data: myproducts =[], isLoading, refetch} = useQuery({
     queryKey: ['myproducts'],
     queryFn: async ()=>{
-        const res = await fetch(`https://resale-server-market.vercel.app/dashboard/categories/${user?.email}`);
+        const res = await fetch(`http://localhost:5000/dashboard/categories/${user?.email}`);
         const data = res.json();
         return data;
     }
@@ -27,7 +27,7 @@ const closeModal = () => {
     setmyProductDelete(null);
 }
 const deletaitationProduct = (data) => {
-    fetch(`https://resale-server-market.vercel.app/myproduct/${data._id}`, {
+    fetch(`http://localhost:5000/myproduct/${data._id}`, {
         method: 'DELETE',
         headers: {
             'content-type': 'application/json'

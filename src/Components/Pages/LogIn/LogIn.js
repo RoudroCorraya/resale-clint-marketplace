@@ -40,7 +40,7 @@ useEffect(()=>{
         const cuurrentUser = {
             email: email
         }
-        fetch(`https://resale-server-market.vercel.app/jwt`, {
+        fetch(`http://localhost:5000/jwt`, {
             method: 'POST',
             headers: {
                 
@@ -74,7 +74,7 @@ useEffect(()=>{
                 // console.log('save googleuser', googleuser);
         
         
-                // fetch('https://resale-server-market.vercel.app/users', {
+                // fetch('http://localhost:5000/users', {
                 //     method: 'POST',
                 //     headers: {
                 //         autorization: `bearer ${localStorage.getItem('accessToken')}`,

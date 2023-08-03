@@ -3,7 +3,7 @@ import React from 'react';
 const Advertice = ({ advertiseInfo }) => {
     const { model, category, productImg } = advertiseInfo;
     return (
-        <div className="card w-80 bg-base-100 shadow-xl">
+        <div className="card w-80 bg-base-100 shadow-xl mx-auto">
             <div className="card-body">
                 <div className='text-center'>
                 <div className="avatar indicator">

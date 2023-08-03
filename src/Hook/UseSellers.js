@@ -4,7 +4,7 @@ const useSeller = (email) =>{
     const [seller, setIsseller] = useState(false);
     
      useEffect(()=>{
-        fetch(`https://resale-server-market.vercel.app/users/seller/${email}`)
+        fetch(`http://localhost:5000/users/seller/${email}`)
         .then(res => res.json())
         .then(data => {
             console.log('hook seller',data);

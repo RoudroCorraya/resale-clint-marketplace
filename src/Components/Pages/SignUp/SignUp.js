@@ -26,7 +26,7 @@ useEffect(()=>{
             .then(res => {
                 const user = res.user;
                 console.log(user);
-                getToken(user.email);
+                // getToken(user.email);
                 toast.success('successfully signUp');
                 const userInfo = {
                     displayName: data.name,
@@ -50,11 +50,11 @@ useEffect(()=>{
         const user = { name: data.name, email: data.email, role: data.role };
         
         
-        fetch('https://resale-server-market.vercel.app/users', {
+        fetch('http://localhost:5000/users', {
             method: 'POST',
             headers: {
                 autorization: `bearer ${localStorage.getItem('accessToken')}`,
-                'content-type': 'application/json'
+                'Content-Type': 'application/json'
 
 
             },
@@ -68,31 +68,31 @@ useEffect(()=>{
 
             })
     }
-    const getToken = (email) =>{
-        const cuurrentUser = {
-            email: email
-        }
-        fetch(`https://resale-server-market.vercel.app/jwt`, {
-            method: 'POST',
-            headers: {
+    // const getToken = (email) =>{
+    //     const cuurrentUser = {
+    //         email: email
+    //     }
+    //     fetch(`http://localhost:5000/jwt`, {
+    //         method: 'POST',
+    //         headers: {
                 
-                'content-type' : 'application/json'
-            },
-            body: JSON.stringify(cuurrentUser)
-        })
-        .then(res => res.json())
-        .then(data => {
-            console.log('lastone',data);
-            localStorage.setItem('accessToken', data.token);
-        })
-    }
+    //             'content-type' : 'application/json'
+    //         },
+    //         body: JSON.stringify(cuurrentUser)
+    //     })
+    //     .then(res => res.json())
+    //     .then(data => {
+    //         console.log('lastone',data);
+    //         localStorage.setItem('accessToken', data.token);
+    //     })
+    // }
 
 
     const handlesignIngoogle = () => {
         googleSignUp()
         .then(res => {
             const user = res.user;
-            getToken(user.email);
+            // getToken(user.email);
             console.log('googlesignIn user', user);
             const userInfo = {
                 displayName: data.name,
@@ -106,7 +106,7 @@ useEffect(()=>{
                 console.log('save googleuser', googleuser);
         
         
-                fetch('https://resale-server-market.vercel.app/users', {
+                fetch('http://localhost:5000/users', {
                     method: 'POST',
                     headers: {
                         autorization: `bearer ${localStorage.getItem('accessToken')}`,

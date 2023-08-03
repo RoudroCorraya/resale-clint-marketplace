@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useLoaderData, useLocation } from 'react-router-dom';
+import { useLoaderData, useLocation, useNavigate } from 'react-router-dom';
 import AllBuyerDetails from './AllBuyerDetails';
 import { toast } from 'react-hot-toast';
 import BuyerConfirmModal from '../../../Components/Shared/ConfirmationModal/BuyerConfirmModal';
@@ -11,16 +11,16 @@ const AllBuyer = () => {
     // const allBuyer = useLoaderData();
     // const {data:allBuyer = [], refetch} = useQuery({
     //     queryKey: ['allBuyer'],
-    //     queryFn: () => fetch('https://resale-server-market.vercel.app/buyer')
+    //     queryFn: () => fetch('http://localhost:5000/buyer')
     //     .then(res => res.json())
         
     // })
 
     const [deleteBuyer, setDeleteBuyer] = useState(null);
-    const navigate = useLocation();
+    const navigate = useNavigate();
     const [allBuyer, setAllBuyer] = useState([]);
     useEffect(()=>{
-        axios.get('https://resale-server-market.vercel.app/buyer')
+        axios.get('http://localhost:5000/buyer')
         .then(data => {
             
             const loadedData = data.data;
@@ -33,7 +33,7 @@ const AllBuyer = () => {
         setDeleteBuyer(null);
     }
    const deletaitation = (buyer) =>{
-    fetch(`https://resale-server-market.vercel.app/buyer/${buyer._id}`, {
+    fetch(`http://localhost:5000/buyer/${buyer._id}`, {
     method: 'DELETE',
     headers: {
         'content-type' : 'application/json'
@@ -45,7 +45,7 @@ const AllBuyer = () => {
         if(data.deletedCount > 0 ){
             toast.success(`${deleteBuyer.name} deleted Successfully`);
             // refetch();
-            navigate('/dashboard');
+            navigate('/dashboard/buyers');
         }
     })
    }

@@ -17,12 +17,14 @@ const Category = () => {
    
     
     return (
-        <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 my-4'>
+        <div className='text-center'>
+            <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 my-4'>
             
             {
                 categoryData.map(category=> <CategoryDetails key={category._id} category={category}></CategoryDetails>)
             }
             
+        </div>
         </div>
     );
 };

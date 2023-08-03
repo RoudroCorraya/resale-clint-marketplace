@@ -11,7 +11,7 @@ const WishList = () => {
     const { data: wishList = [], refetch, isLoading } = useQuery({
         queryKey: ['wishList'],
         queryFn: async () => {
-            const res = await fetch(`https://resale-server-market.vercel.app/dashboard/wishlist/${user?.email}`);
+            const res = await fetch(`http://localhost:5000/dashboard/wishlist/${user?.email}`);
             const data = await res.json();
             
             return data;
@@ -24,7 +24,7 @@ const WishList = () => {
         setWishlistDelete(null);
     }
     const deletaitationWishList = (data) => {
-        fetch(`https://resale-server-market.vercel.app/wishlist/${data?.productID}`, {
+        fetch(`http://localhost:5000/wishlist/${data?.productID}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json'

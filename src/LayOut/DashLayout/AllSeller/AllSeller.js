@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useLoaderData, useLocation } from 'react-router-dom';
+import { useLoaderData, useLocation, useNavigate } from 'react-router-dom';
 import AllSellerDetails from './AllSellerDetails';
 import ConfirmationModal from '../../../Components/Shared/ConfirmationModal/ConfirmationModal';
 import { toast } from 'react-hot-toast';
@@ -7,12 +7,12 @@ import { useQuery } from 'react-query';
 
 const AllSeller = () => {
 
-   const navigate = useLocation();
+   const navigate = useNavigate();
    
     // const allseller = useLoaderData();
     const {data:allseller = [], refetch} = useQuery({
         queryKey: ['allseller'],
-        queryFn: ()=> fetch('https://resale-server-market.vercel.app/sellers')
+        queryFn: ()=> fetch('http://localhost:5000/sellers')
         .then(res => res.json())
 
     })
@@ -22,7 +22,7 @@ const AllSeller = () => {
         setDeleteSeller(null);
     }
    const deletaitation = (selelr) =>{
-    fetch(`https://resale-server-market.vercel.app/sellers/${selelr._id}`, {
+    fetch(`http://localhost:5000/sellers/${selelr._id}`, {
     method: 'DELETE',
     headers: {
         'content-type' : 'application/json'
@@ -34,7 +34,7 @@ const AllSeller = () => {
         if(data.deletedCount > 0 ){
             toast.success(`${selelr.name} deleted Successfully`);
             refetch();
-            navigate('/dashboard');
+            navigate('/dashboard/sellers');
            
         }
     })
