@@ -50,7 +50,7 @@ useEffect(()=>{
         const user = { name: data.name, email: data.email, role: data.role };
         
         
-        fetch('http://localhost:5000/users', {
+        fetch('https://resale-server-market.vercel.app/users', {
             method: 'POST',
             headers: {
                 autorization: `bearer ${localStorage.getItem('accessToken')}`,
@@ -72,7 +72,7 @@ useEffect(()=>{
     //     const cuurrentUser = {
     //         email: email
     //     }
-    //     fetch(`http://localhost:5000/jwt`, {
+    //     fetch(`https://resale-server-market.vercel.app/jwt`, {
     //         method: 'POST',
     //         headers: {
                 
@@ -106,7 +106,7 @@ useEffect(()=>{
                 console.log('save googleuser', googleuser);
         
         
-                fetch('http://localhost:5000/users', {
+                fetch('https://resale-server-market.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         autorization: `bearer ${localStorage.getItem('accessToken')}`,

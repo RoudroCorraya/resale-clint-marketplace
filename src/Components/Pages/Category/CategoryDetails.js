@@ -18,7 +18,7 @@ const CategoryDetails = ({category}) => {
     const [varify, setverifyget] = useState(false);
     
     useEffect(()=>{
-        fetch(`http://localhost:5000/vari/${SellerEmail}`)
+        fetch(`https://resale-server-market.vercel.app/vari/${SellerEmail}`)
         .then(res => res.json())
         .then(data => {
             setverifyinfo(data);
@@ -43,7 +43,7 @@ const CategoryDetails = ({category}) => {
 
         // console.log(WishListInf);
         // console.log(category);
-        fetch('http://localhost:5000/wishlish', {
+        fetch('https://resale-server-market.vercel.app/wishlish', {
             method: 'POST',
             headers: {
                 'content-type' : 'application/json'

@@ -10,7 +10,7 @@ const MyBuyers = () => {
     // const myBuyer = useLoaderData();
     // const {data:myBuyer = [], refetch} = useQuery({
     //     queryKey: ['myBuyer'],
-    //     queryFn: ()=> fetch(`http://localhost:5000/dashboard/mybuyerfind/${SellerEmail}`)
+    //     queryFn: ()=> fetch(`https://resale-server-market.vercel.app/dashboard/mybuyerfind/${SellerEmail}`)
     //     .then(res => res.json())
     // })
     const navigate = useNavigate();
@@ -21,7 +21,7 @@ const MyBuyers = () => {
         if(!user?.email || !token){
             return;
         }
-        fetch(`http://localhost:5000/dashboard/mybuyerfind/${user?.email}`,{
+        fetch(`https://resale-server-market.vercel.app/dashboard/mybuyerfind/${user?.email}`,{
             headers: {
                 autorization: `bearer ${token}`,
                 
@@ -39,7 +39,7 @@ const MyBuyers = () => {
         setdeleteMybuyer(null);
     }
    const deletaitation = (mybuyer) =>{
-    fetch(`http://localhost:5000/mybuyer/${mybuyer._id}`, {
+    fetch(`https://resale-server-market.vercel.app/mybuyer/${mybuyer._id}`, {
     method: 'DELETE',
     headers: {
         'content-type' : 'application/json'

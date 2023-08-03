@@ -12,7 +12,7 @@ const AllSeller = () => {
     // const allseller = useLoaderData();
     const {data:allseller = [], refetch} = useQuery({
         queryKey: ['allseller'],
-        queryFn: ()=> fetch('http://localhost:5000/sellers')
+        queryFn: ()=> fetch('https://resale-server-market.vercel.app/sellers')
         .then(res => res.json())
 
     })
@@ -22,7 +22,7 @@ const AllSeller = () => {
         setDeleteSeller(null);
     }
    const deletaitation = (selelr) =>{
-    fetch(`http://localhost:5000/sellers/${selelr._id}`, {
+    fetch(`https://resale-server-market.vercel.app/sellers/${selelr._id}`, {
     method: 'DELETE',
     headers: {
         'content-type' : 'application/json'

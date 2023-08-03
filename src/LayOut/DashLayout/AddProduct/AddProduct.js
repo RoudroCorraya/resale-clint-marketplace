@@ -15,7 +15,7 @@ const AddProduct = () => {
     const [varify, setveryfy] = useState({ varify: false });
     // console.log('berify cheak',varify);
     useEffect(()=>{
-        fetch(`http://localhost:5000/userverifycheak/${user?.email}`)
+        fetch(`https://resale-server-market.vercel.app/userverifycheak/${user?.email}`)
                 .then(res => res.json())
                 .then(userinfo => {
                    
@@ -65,7 +65,7 @@ const AddProduct = () => {
 
                     }
                    
-                    fetch('http://localhost:5000/dashboard/addproduct', {
+                    fetch('https://resale-server-market.vercel.app/dashboard/addproduct', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'
@@ -88,7 +88,7 @@ const AddProduct = () => {
         console.log('info adproduct', data);
         // const userverifycheak = (email) => {
 
-        //     fetch(`http://localhost:5000/userverifycheak/${email}`)
+        //     fetch(`https://resale-server-market.vercel.app/userverifycheak/${email}`)
         //         .then(res => res.json())
         //         .then(data => {
         //             console.log('inuserverifycheak ', data);
@@ -96,7 +96,7 @@ const AddProduct = () => {
         //         })
         // }
         // const userverifycheak = (email) =>{
-        //     fetch(`http://localhost:5000/userverifycheak/${email}`, {
+        //     fetch(`https://resale-server-market.vercel.app/userverifycheak/${email}`, {
         //         method: 'PATCH',
         //     headers: {
         //         'content-type': 'application/json'

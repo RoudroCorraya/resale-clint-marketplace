@@ -7,7 +7,7 @@ const AllSellerDetails = ({ seller, i, setDeleteSeller }) => {
     const { name, email, _id, varify } = seller;
     
     const handleVerify = (email, _id) => {
-        fetch(`http://localhost:5000/userVerify/${_id}`, {
+        fetch(`https://resale-server-market.vercel.app/userVerify/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -28,7 +28,7 @@ const AllSellerDetails = ({ seller, i, setDeleteSeller }) => {
        
     }
     const categoryverify = (email) =>{
-        fetch(`http://localhost:5000/sellerVerify/${email}`, {
+        fetch(`https://resale-server-market.vercel.app/sellerVerify/${email}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
@@ -47,7 +47,7 @@ const AllSellerDetails = ({ seller, i, setDeleteSeller }) => {
         
     }
     // const productVerify = (email) =>{
-    //     fetch(`http://localhost:5000/productVerify/${email}`, {
+    //     fetch(`https://resale-server-market.vercel.app/productVerify/${email}`, {
     //         method: 'PATCH',
     //         headers: {
     //             'content-type': 'application/json'
