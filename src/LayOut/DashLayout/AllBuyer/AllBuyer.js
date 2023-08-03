@@ -45,7 +45,7 @@ const AllBuyer = () => {
         if(data.deletedCount > 0 ){
             toast.success(`${deleteBuyer.name} deleted Successfully`);
             // refetch();
-            navigate('/dashboard/buyers');
+            navigate('/dashboard');
         }
     })
    }
