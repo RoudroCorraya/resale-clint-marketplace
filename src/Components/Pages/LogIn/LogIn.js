@@ -119,7 +119,7 @@ useEffect(()=>{
                 <p>{data}</p>
                 <input className='btn btn-warning' type="submit" />
                 <FaGoogle onClick={handlesignIngoogle} className='mx-auto font-semibold text-3xl'/>
-                <p className='text-center'>Already Have Account? <Link className='text-sky-500' to='/signup'>SignUp</Link></p>
+                <p className='text-center'>New Here? Create Account First <Link className='text-sky-500' to='/signup'>SignUp</Link></p>
                 
             </form>
         </div>

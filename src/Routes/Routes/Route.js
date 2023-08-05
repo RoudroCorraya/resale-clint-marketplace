@@ -20,6 +20,7 @@ import MyProduct from "../../LayOut/DashLayout/AddProduct/MyProduct";
 import Blogs from "../../Components/Pages/Blogs/Blogs";
 import MyBuyers from "../../LayOut/DashLayout/MyBuyers/MyBuyers";
 import WishList from "../../Components/Pages/Dashboard/WishList";
+import Page404 from "../../Components/Pages/404/Page404";
 
 export const router = createBrowserRouter([
     {
@@ -44,11 +45,18 @@ export const router = createBrowserRouter([
                 loader: ({ params }) => fetch(`https://resale-server-market.vercel.app/categories/${params?.category}`),
                 element: <PrivateRoute><Category></Category></PrivateRoute>
             },
-            
+
             {
                 path: '/blog',
-                
+
                 element: <Blogs></Blogs>
+            }
+            ,
+            {
+                path: '*',
+
+                element: <Page404></Page404>
+
             }
 
         ]
@@ -79,28 +87,28 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/addproduct',
-               
+
                 element: <AddProduct></AddProduct>
             },
             {
                 path: '/dashboard/categories/:SellerEmail',
-            //    loader: ({params})=> fetch(`https://resale-server-market.vercel.app/dashboard/categories/${params.SellerEmail}`),
+                //    loader: ({params})=> fetch(`https://resale-server-market.vercel.app/dashboard/categories/${params.SellerEmail}`),
                 element: <MyProduct></MyProduct>
             },
-           
+
             {
                 path: '/dashboard/payment/:_id',
-               loader: ({params})=> fetch(`https://resale-server-market.vercel.app/dashboard/payment/${params?._id}`),
+                loader: ({ params }) => fetch(`https://resale-server-market.vercel.app/dashboard/payment/${params?._id}`),
                 element: <Payment></Payment>
             },
             {
                 path: '/dashboard/mybuyerfind/:SellerEmail',
-            //    loader: ({params})=> fetch(`https://resale-server-market.vercel.app/dashboard/mybuyerfind/${params.SellerEmail}`),
+                //    loader: ({params})=> fetch(`https://resale-server-market.vercel.app/dashboard/mybuyerfind/${params.SellerEmail}`),
                 element: <MyBuyers></MyBuyers>
             },
             {
                 path: '/dashboard/wishlist/:buyerEmail',
-           
+
                 element: <WishList></WishList>
             },
         ]

@@ -24,16 +24,16 @@ const Navbar = () => {
                             user?.uid ?
                                 <>
                                     <li><Link>Homepage</Link></li>
-                                    <li><Link>Portfolio</Link></li>
-                                    <li><Link>About</Link></li>
+                                    <li><Link to='/Portfolio'>Portfolio</Link></li>
+                                    <li><Link to='/About'>About</Link></li>
                                     <li><Link to='/blog'>Blog</Link></li>
                                     <li><Link to='/dashboard' className=''>DashBoard</Link></li>
                                 </>
                                 :
                                 <>
-                                    <li><Link>Homepage</Link></li>
-                                    <li><Link>Portfolio</Link></li>
-                                    <li><Link>About</Link></li>
+                                    <li><Link to='/'>Homepage</Link></li>
+                                    <li><Link to='/Portfolio'>Portfolio</Link></li>
+                                    <li><Link to='/About'>About</Link></li>
                                     <li><Link to='/blog'>Blog</Link></li>
                                     
                                 </>
